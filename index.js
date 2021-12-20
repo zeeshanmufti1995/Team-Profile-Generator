@@ -1,3 +1,15 @@
+// link to page creation
+const generateHTML = require('./src/generateHTML');
+
+// team profiles
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern'); 
+
+// node modules 
+const fs = require('fs'); 
+const inquirer = require('inquirer');
+
 // team array
 const teamArray = []; 
 
@@ -35,6 +47,7 @@ const addManager = () => {
             name: 'email',
             message: "Please enter the manager's email.",
             validate: email => {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
                 if (valid) {
                     return true;
                 } else {
